@@ -38,3 +38,9 @@ jspm_packages
 
 # Netbeans private files
 nbproject
+
+# NodeJS packages
+node_modules
+
+# Bower Component packages
+public/bower_components
