@@ -1,5 +1,7 @@
 /**
  * Posts
+ *
+ * @type Module database|Module database
  */
 var db = require('../config/database');
 
