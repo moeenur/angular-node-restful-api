@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p
+    | Welcome to #{title}.<br />
+    | An example of RESTful API with search and pagination
+    a.btn.btn-flat.btn-floating.waves-effect.waves-red(href="/posts")
+        i.material-icons.grey-text.text-darken-4 launch

@@ -1,0 +1,75 @@
+extends ../layout
+
+block content
+  //- ADD POSTS CONTROLLER
+  div(ng-controller="postsController")
+    div.row
+        div.col.s12
+            div.card
+                div.card-content
+                    blockquote.card-title #{title} : A simple CRUD app example with search and pagination
+                        a.btn.btn-flat.btn-floating.waves-effect.waves-red.right.tooltipped(href="/", tooltipped="tooltip" data-position="top" data-tooltip='Home page')
+                            i.material-icons.grey-text.text-darken-4 home
+                    //- ADD BUTTON AND SEARCH INPUT BOX
+                    div.row
+                        div.col.s6
+                            a.btn-flat.btn-floating.btn-large.waves-effect.waves-red.tooltipped(ng-click='createFormModal()', tooltipped="tooltip" data-position="top" data-tooltip='Add')
+                                i.material-icons.grey-text.text-darken-4 add
+                        div.input-field.col.s6.search-input-btn
+                            i.material-icons.prefix search
+                            input.waves-red(type="text" ng-model="view.keyword" ng-change="keywordSearch(view.keyword)")
+                            label(for="search") Search
+                    //- TABLE
+                    table.bordered.centered.highlight.responsive-table
+                      thead
+                        tr
+                          th
+                            | Title
+                          | 
+                          th
+                            | Description
+                          | 
+                          th
+                            | Date
+                          | 
+                          th
+                            | Action
+                      | 
+                      tbody
+                        tr(ng-repeat="post in view.postList.data")
+                          td {{post.title}}
+                          | 
+                          td {{post.description}}
+                          | 
+                          td {{post.modified| date:'yyyy-MM-dd'}}
+                          | 
+                          td
+                            .btn-group
+                              a.btn-flat.btn-floating.waves-effect.waves-red.tooltipped(ng-click='updateFormModal(post.id)', tooltipped="tooltip" data-position="top" data-tooltip='Update')
+                                i.material-icons.grey-text.text-darken-4 edit
+                              a.btn-flat.btn-floating.waves-effect.waves-red.tooltipped(ng-click='deletePostForm(post)', tooltipped="tooltip" data-position="top" data-tooltip='Remove')
+                                i.material-icons.grey-text.text-darken-4 delete_forever
+                          | 
+                    table
+                    div.right-align.grey-text.text-darken-2 Total number of rows found : {{view.postList.total_data}}
+                    //- PAGINATION
+                    ul.pagination
+                        li(ng-class="(view.postList.current_page <= 1 ? 'disabled':'waves-effect waves-red')")
+                            a(ng-click="paginate(view.postList.current_page - 1)")
+                                i.material-icons navigate_before
+                        li.waves-effect.waves-red(ng-repeat="n in []| range: view.postList.last_page" ng-class="{active: (n+1) == view.postList.current_page}")
+                            a(href="javascript:void(0)" ng-click="paginate(n+1)") {{n+1}}
+                        li(ng-class="(view.postList.current_page >= view.postList.last_page ? 'disabled':'waves-effect waves-red')")
+                            a(ng-click="paginate(view.postList.current_page+1)")
+                                i.material-icons navigate_next
+
+            //- CREATE FORM
+            include create
+            //- UPDATE FORM
+            include update
+            //- DELETE ALERT DIALOG
+            include delete
+
+block scripts
+    script(type='text/javascript' src='/javascripts/services/post.js')
+    script(type='text/javascript' src='/javascripts/controllers/posts.js')

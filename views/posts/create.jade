@@ -1,0 +1,21 @@
+//- CREATE FORM ON MODAL
+div#create-form-modal.modal.modal-fixed-footer
+    div.modal-content
+        blockquote.flow-text Create Post
+        div.row
+            form.col.s12(name="createPostForm")
+                div.row
+                    div.input-field.col.s12
+                        input#create-title.waves-red(type="text" name="title" length="200" required ng-model="view.createForm.title")
+                        label(for="title") Title
+                        span.grey-text(ng-show="createPostForm.title.$error.required") required
+                div.row
+                    div.input-field.col.s12
+                        textarea#create-description.materialize-textarea.waves-red(name="description" length="500" required ng-model="view.createForm.description")
+                        label(for="description") Description
+                        span.grey-text(ng-show="createPostForm.description.$error.required") required
+    div.modal-footer
+        button.modal-action.modal-close.waves-effect.waves-red.btn-flat
+            i.material-icons cancel
+        button(ng-click="createPost()" ng-class="createPostForm.$invalid?'btn disabled':'waves-effect waves-red btn-flat'")
+            i.material-icons add

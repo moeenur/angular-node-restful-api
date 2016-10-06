@@ -1,0 +1,30 @@
+doctype html
+html(ng-app="nodeNgApp")
+  head
+    title= title
+    //- META DATA
+    meta( charset='utf-8' )
+    meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+    meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+    meta( name='description', content='Baking Materialize Snippets with Jade' )
+    //- GOOGLE FONT ICONS
+    link(rel='stylesheet', href='/bower_components/material-design-icons/iconfont/material-icons.css')
+    //- STYLESHEETS
+    link(rel='stylesheet', href='/bower_components/materialize/dist/css/materialize.min.css')
+    link(rel='stylesheet', href='/bower_components/angular-loading-bar/build/loading-bar.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+  body
+    block content
+
+    //- JAVASCRIPTS
+    script(type='text/javascript' src='/bower_components/jquery/dist/jquery.min.js')
+    script(type='text/javascript' src='/bower_components/materialize/dist/js/materialize.min.js')
+    script(type='text/javascript' src='/bower_components/angular/angular.min.js')
+    script(type='text/javascript' src='/bower_components/angular-loading-bar/build/loading-bar.min.js')
+    //- APPS JAVASCRIPTS
+    script(type='text/javascript' src='/javascripts/app.js')
+    script(type='text/javascript' src='/javascripts/app.directive.js')
+    script(type='text/javascript' src='/javascripts/app.filter.js')
+    //- LOAD ADDITIONAL JAVASCRIPTS
+    block scripts

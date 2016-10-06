@@ -1,0 +1,10 @@
+//- DELETE ALERT MESSAGE ON MODAL
+div#delete-form-modal.modal.modal-fixed-footer
+    div.modal-content
+        blockquote.flow-text Delete Post
+        p.flow-text.center-align Are sure to delete the post : {{view.deleteForm.title}} ?
+    div.modal-footer
+        button.modal-action.modal-close.waves-effect.waves-red.btn-flat
+            i.material-icons cancel
+        button.modal-action.modal-close.waves-effect.waves-red.btn-flat(ng-click='deletePost(view.deleteForm.id)')
+            i.material-icons done

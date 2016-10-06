@@ -1,0 +1,21 @@
+//- UPDATE FORM ON MODAL
+div#update-form-modal.modal.modal-fixed-footer
+    div.modal-content
+        blockquote.flow-text Update Post
+        div.row
+            form.col.s12(name="updatePostForm")
+                div.row
+                    div.input-field.col.s12
+                        input#update-title.waves-red(type="text" name="title" length="200" required ng-maxlength="200" ng-model="view.updateForm.title")
+                        label(for="title" ng-class="{active:view.updateForm.title}") Title
+                        span.grey-text(ng-show="updatePostForm.title.$error.required") required
+                div.row
+                    div.input-field.col.s12
+                        textarea#update-description.materialize-textarea.waves-red(name="description" length="500" required ng-maxlength="500" ng-model="view.updateForm.description")
+                        label(for="description" ng-class="{active:view.updateForm.description}") Description
+                        span.grey-text(ng-show="updatePostForm.title.$error.required") required
+    div.modal-footer
+        button.modal-action.modal-close.waves-effect.waves-red.btn-flat
+            i.material-icons cancel
+        button(ng-click='updatePost(view.updateForm.id)' ng-class="updatePostForm.$invalid?'btn disabled':'waves-effect waves-red btn-flat'")
+            i.material-icons edit
